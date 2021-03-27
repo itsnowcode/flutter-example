@@ -42,5 +42,9 @@ void main() {
 }
 
 T widget<T extends Widget>(WidgetTester tester, Finder f) {
-  return tester.element(f).widget;
+  Widget w = tester.element(f).widget;
+  if (w is T) {
+    return w;
+  }
+  return w as T;
 }
